@@ -39,16 +39,6 @@ def pull_RCFD_series_1(wrds_username=WRDS_USERNAME):
     return rcfd_series_1
 
 
-def pull_RCON_series_1(wrds_username=WRDS_USERNAME):
-    """Pull RCON series from WRDS.
-
-    Had to use parquet file to gather data due to missing column information
-    """
-    rcon_series_1 = pd.read_parquet("/Users/xitaazrampersad/Downloads/FIN_36200_Class_Code/Final_Project_P2/data_manual/RCON_Series_1.parquet")
-
-    return rcon_series_1
-
-
 def pull_RCON_series_2(wrds_username=WRDS_USERNAME):
     """Pull RCON series from WRDS.
     """
@@ -105,7 +95,7 @@ def pull_RCON_series_1(wrds_username=WRDS_USERNAME):
 
     Had to use parquet file to gather data due to missing column information
     """
-    rcon_series_1 = pd.read_parquet("/Users/xitaazrampersad/Downloads/FIN_36200_Class_Code/Final_Project_P2/data_manual/RCON_Series_1.parquet")
+    rcon_series_1 = pd.read_parquet("/../data/manual/RCON_Series_1.parquet")
 
     return rcon_series_1
 
