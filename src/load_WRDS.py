@@ -95,28 +95,28 @@ def pull_RCON_series_1(wrds_username=WRDS_USERNAME):
 
     Had to use parquet file to gather data due to missing column information
     """
-    rcon_series_1 = pd.read_parquet("data_manual/RCON_Series_1.parquet")
+    rcon_series_1 = pd.read_parquet("RCON_Series_1.parquet")
 
     return rcon_series_1
 
 
 def load_RCON_series_1(data_dir=DATA_DIR):
-    path = Path(data_dir) / "pulled" / "RCON_Series_1.parquet"
+    path = "RCON_Series_1.parquet"
     comp = pd.read_parquet(path)
     return comp
 
 def load_RCON_series_2(data_dir=DATA_DIR):
-    path = Path(data_dir) / "pulled" / "RCON_Series_2.parquet"
+    path = "RCON_Series_2.parquet"
     comp = pd.read_parquet(path)
     return comp
 
 def load_RCFD_series_1(data_dir=DATA_DIR):
-    path = Path(data_dir) / "pulled" / "RCFD_Series_1.parquet"
+    path = "RCFD_Series_1.parquet"
     comp = pd.read_parquet(path)
     return comp
 
 def load_RCFD_series_2(data_dir=DATA_DIR):
-    path = Path(data_dir) / "pulled" / "RCFD_Series_2.parquet"
+    path = "RCFD_Series_2.parquet"
     comp = pd.read_parquet(path)
     return comp
 
@@ -127,16 +127,18 @@ def _demo():
     rcfd_series_1 = load_RCFD_series_1(data_dir=DATA_DIR)
     rcfd_series_2 = load_RCFD_series_2(data_dir=DATA_DIR)
 
-
-if __name__ == "__main__":
+def main():
     rcon_series_1  = pull_RCON_series_1(wrds_username=WRDS_USERNAME)
-    rcon_series_1.to_parquet(DATA_DIR / "pulled" / "RCON_Series_1.parquet")
+    rcon_series_1.to_parquet("RCON_Series_1.parquet")
 
     rcon_series_2 = pull_RCON_series_2(wrds_username=WRDS_USERNAME)
-    rcon_series_2.to_parquet(DATA_DIR / "pulled" / "RCON_Series_2.parquet")
-  
+    rcon_series_2.to_parquet("RCON_Series_2.parquet")
+
     rcfd_series_1 = pull_RCFD_series_1(wrds_username=WRDS_USERNAME)
-    rcfd_series_1.to_parquet(DATA_DIR / "pulled" / "RCFD_Series_1.parquet")
+    rcfd_series_1.to_parquet("RCFD_Series_1.parquet")
 
     rcfd_series_2 = pull_RCFD_series_2(wrds_username=WRDS_USERNAME)
-    rcfd_series_2.to_parquet(DATA_DIR / "pulled" / "RCFD_Series_2.parquet")
+    rcfd_series_2.to_parquet("RCFD_Series_2.parquet")
+
+if __name__ == "__main__":
+    main()
