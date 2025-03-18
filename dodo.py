@@ -199,8 +199,8 @@ def task_run_notebooks():
 ##########################################
 ## Example: Other tasks if needed
 ##########################################
+""""
 def task_summary_stats():
-    """Example summary stats or table creation."""
     file_dep = ["./src/example_table.py"]
     file_output = ["example_table.tex", "pandas_to_latex_simple_table1.tex"]
     targets = [OUTPUT_DIR / file for file in file_output]
@@ -215,7 +215,6 @@ def task_summary_stats():
     }
 
 def task_example_plot():
-    """Example plots"""
     file_dep = [Path("./src") / f for f in ["example_plot.py", "pull_fred.py"]]
     file_output = ["example_plot.png"]
     targets = [OUTPUT_DIR / f for f in file_output]
@@ -227,5 +226,6 @@ def task_example_plot():
         "file_dep": file_dep,
         "clean": True,
     }
+"""
 
-# End of dodo.py
+# End of dodo.py"
