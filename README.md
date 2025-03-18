@@ -1,4 +1,4 @@
-Example Project Using the ChartBook Template
+Final Project - Monetary Tightening and US Bank Fragility
 =============================================
 
 ## About this project
