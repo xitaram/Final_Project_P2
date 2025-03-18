@@ -16,8 +16,6 @@ from os import environ, getcwd, path
 from pathlib import Path
 
 from colorama import Fore, Style, init
-
-## Custom reporter: Print PyDoit Text in Green
 from doit.reporter import ConsoleReporter
 
 try:
@@ -199,56 +197,8 @@ def task_run_notebooks():
         }
 
 ##########################################
-## 2) Compile LaTeX Files in Sequence
-##########################################
-# The first one is financial_analysis_report.tex,
-# then bank_analysis.tex after that one is done.
-
-def task_compile_financial_analysis_report():
-    """
-    Compile financial_analysis_report.tex to PDF.
-    Depends on the last notebook finishing (#7).
-    """
-    return {
-        "actions": [
-            "latexmk -xelatex -halt-on-error -cd ./reports/financial_analysis_report.tex",
-            "latexmk -xelatex -halt-on-error -c -cd ./reports/financial_analysis_report.tex",
-        ],
-        "file_dep": [
-            "./reports/financial_analysis_report.tex",
-            # Wait for the final notebook in the chain
-            str(OUTPUT_DIR / "7.latexOverview.ipynb"),
-        ],
-        "targets": ["./reports/financial_analysis_report.pdf"],
-        "task_dep": ["run_notebooks:7.latexOverview.ipynb"],
-        "clean": True,
-    }
-
-def task_compile_bank_analysis():
-    """
-    Compile bank_analysis.tex to PDF, but only after
-    financial_analysis_report is done.
-    """
-    return {
-        "actions": [
-            "latexmk -xelatex -halt-on-error -cd ./reports/bank_analysis.tex",
-            "latexmk -xelatex -halt-on-error -c -cd ./reports/bank_analysis.tex",
-        ],
-        "file_dep": [
-            "./reports/bank_analysis.tex",
-            "./reports/financial_analysis_report.pdf",
-        ],
-        "targets": ["./reports/bank_analysis.pdf"],
-        "task_dep": ["compile_financial_analysis_report"],
-        "clean": True,
-    }
-
-##########################################
 ## Example: Other tasks if needed
 ##########################################
-# Below are examples of other tasks you might have, e.g. data pulls or summary stats.
-# They are optional. Adjust or remove them as you wish.
-
 def task_summary_stats():
     """Example summary stats or table creation."""
     file_dep = ["./src/example_table.py"]
