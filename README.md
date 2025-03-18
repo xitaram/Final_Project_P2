@@ -9,6 +9,7 @@ This project replicates Table 1, Table A1, and Figure A1 from the Monetary Tight
 ## Team contribution
 
 Xitaaz Rampersad - Table1, Analysis and Charts, load_WRDS.py, Clean_data.py
+
 Samuel Rubidge - TableA1, FigureA1, Latex document creation, summary statistics
 
 We came together for the rest of tasks that include unit testing, and exploring various data sources 
