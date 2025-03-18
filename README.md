@@ -4,7 +4,14 @@ Team Members - Xitaaz Rampersad and Samuel Rubidge
 
 ## About this project
 
-This project replicates Table1, TableA1, and Figure A1 of the Monetary Tightening and Bank Fragility paper.
+This project replicates Table 1, Table A1, and Figure A1 from the Monetary Tightening and Bank Fragility paper using the most automated and efficient approach possible.
+
+## Team contribution
+
+Xitaaz Rampersad - Table1, Analysis and Charts, load_WRDS.py, Clean_data.py
+Samuel Rubidge - TableA1, FigureA1, Latex document creation, summary statistics
+
+We came together for the rest of tasks that include unit testing, and exploring various data sources 
 
 ## Quick Start
 
