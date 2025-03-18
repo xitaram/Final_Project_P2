@@ -298,7 +298,8 @@ def clean_treasury_prices(treasury_prices, start_date = '2022-03-31', end_date =
     Returns:
     treasury_prices (pd.DataFrame): Cleaned treasury prices data for the given start and end date
     """
-
+    treasury_prices = treasury_prices.reset_index()
+    
     treasury_prices = treasury_prices[['date', 'iShares 0-1', 'iShares 1-3', 'sp 3-5', 'iShares 7-10', 'iShares 10-20', 'iShares 20+']]
     treasury_prices = treasury_prices.set_index('date') #set date as index
     treasury_prices = treasury_prices.resample('Q').first() #resample to quarterly
