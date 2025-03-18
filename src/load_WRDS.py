@@ -95,7 +95,7 @@ def pull_RCON_series_1(wrds_username=WRDS_USERNAME):
 
     Had to use parquet file to gather data due to missing column information
     """
-    rcon_series_1 = pd.read_parquet("/../data/manual/RCON_Series_1.parquet")
+    rcon_series_1 = pd.read_parquet("data_manual/RCON_Series_1.parquet")
 
     return rcon_series_1
 
