@@ -1,10 +1,49 @@
-## Citation/Disclaimer
+"""
+Bank Data Processing Module
+
+Citation/Disclaimer:
+    Code was built off of Peizhe Huang's project found here:
+    https://github.com/huangpz-a11y/P2_Monetary_Tightening/tree/main
+
+This module provides a suite of functions for extracting, cleaning, and transforming
+various financial datasets related to monetary tightening analysis. It processes data
+from multiple sources (domestic and foreign) including RMBS, treasuries, loans, assets,
+and deposits, as well as cleaning market price data for treasury instruments, the SP Treasury
+bond index, and the iShare MBS ETF.
+
+Modules/Packages:
+    - pandas: Used for DataFrame manipulation and data analysis.
+    - load_WRDS: Custom module for loading WRDS (Wharton Research Data Services) data.
+    - load_assets: Custom module for asset-related functions.
+    - config: Module for configuration settings, including directory paths.
+
+Functions:
+    - get_RMBs(rcfd_series_1, rcon_series_1, report_date='03/31/2022'):
+        Extracts and concatenates RMBS data from both domestic and foreign datasets for the given report date.
+    - get_treasuries(rcfd_series_2, rcon_series_2, report_date='03/31/2022'):
+        Extracts and concatenates treasury data from both domestic and foreign datasets for the given report date.
+    - get_loans(rcon_series_1, report_date='03/31/2022'):
+        Extracts domestic loans data for the specified report date.
+    - get_other_loan(rcon_series_2, rcfd_series_1, report_date='03/31/2022'):
+        Extracts and concatenates other (non-first lien) loans data from both domestic and foreign datasets.
+    - get_total_asset(rcfd_series_2, rcon_series_2, report_date='03/31/2022'):
+        Aggregates total asset data from both domestic and foreign datasets for the specified report date.
+    - get_uninsured_deposits(rcon_series_1, report_date='03/31/2022'):
+        Extracts uninsured deposits data for the specified report date.
+    - get_insured_deposits(rcon_series_1, report_date='03/31/2022'):
+        Extracts insured deposits data, summing multiple deposit components for the specified report date.
+    - clean_treasury_prices(treasury_prices, start_date='2022-03-31', end_date='2023-03-31'):
+        Cleans and resamples treasury prices data to quarterly frequency within the provided date range.
+    - clean_sp_treasury_bond_index(df_SP_Treasury_bond_index, start_date='2022-03-31', end_date='2023-03-31'):
+        Cleans and resamples the SP Treasury bond index data to quarterly frequency within the given date range.
+    - clean_iShare_MBS_ETF(df_iShare_MBS_ETF, start_date='2022-03-31', end_date='2023-03-31'):
+        Cleans and resamples iShare MBS ETF data to quarterly frequency within the specified date range.
+
+Usage:
+    Import this module and call the desired functions with appropriate data inputs and report dates
+    to process and analyze bank financial data relevant to monetary tightening and related topics.
 """
 
-Code was built off of Peizhe Huang's project found here
-https://github.com/huangpz-a11y/P2_Monetary_Tightening/tree/main
-
-"""
 
 import pandas as pd
 import load_WRDS

@@ -1,3 +1,56 @@
+"""
+Module for Extracting and Loading WRDS Financial Data
+
+This module is responsible for fetching financial data series from the WRDS (Wharton Research Data Services)
+database and saving them locally as parquet files for subsequent analysis. It uses SQL queries to extract
+the RCFD and RCON data series over a specified date range and provides functions to load locally stored
+parquet files for these series.
+
+Imports:
+    - pandas: Provides data structures and functions for data manipulation.
+    - numpy: Supports numerical operations.
+    - wrds: Facilitates connection to the WRDS database.
+    - config: Contains configuration settings such as data directories and the WRDS username.
+    - pathlib.Path: For handling filesystem paths.
+
+Global Variables:
+    - OUTPUT_DIR: Directory for saving output files, sourced from config.
+    - DATA_DIR: Directory for accessing data files, sourced from config.
+    - WRDS_USERNAME: Username for connecting to the WRDS database, sourced from config.
+
+Functions:
+    - pull_RCFD_series_1(wrds_username=WRDS_USERNAME):
+          Executes an SQL query to fetch the first RCFD series from WRDS within the date range
+          '2021-12-31' to '2023-09-30' and returns the data as a pandas DataFrame.
+    - pull_RCON_series_2(wrds_username=WRDS_USERNAME):
+          Executes an SQL query to fetch the second RCON series from WRDS within the date range
+          '2021-12-31' to '2023-09-30' and returns the data as a pandas DataFrame.
+    - pull_RCFD_series_2(wrds_username=WRDS_USERNAME):
+          Executes an SQL query to fetch the second RCFD series from WRDS within the date range
+          '2021-12-31' to '2023-09-30' and returns the data as a pandas DataFrame.
+    - pull_RCON_series_1(wrds_username=WRDS_USERNAME):
+          Loads the first RCON series from a local parquet file (used due to missing column information
+          when extracting directly from WRDS) and returns it as a pandas DataFrame.
+    - load_RCON_series_1(data_dir=DATA_DIR):
+          Loads and returns the RCON series 1 data from a local parquet file in the specified data directory.
+    - load_RCON_series_2(data_dir=DATA_DIR):
+          Loads and returns the RCON series 2 data from a local parquet file in the specified data directory.
+    - load_RCFD_series_1(data_dir=DATA_DIR):
+          Loads and returns the RCFD series 1 data from a local parquet file in the specified data directory.
+    - load_RCFD_series_2(data_dir=DATA_DIR):
+          Loads and returns the RCFD series 2 data from a local parquet file in the specified data directory.
+    - _demo():
+          Demonstrates the loading of all local data series.
+    - main():
+          Pulls the data series from WRDS using the respective pull functions and saves them locally as
+          parquet files for future use.
+
+Usage:
+    Run this module as a standalone script to connect to the WRDS database, extract the necessary financial
+    data series, and save them as parquet files. These files can later be loaded using the provided load functions
+    for further analysis.
+"""
+
 import pandas as pd
 from pandas.tseries.offsets import MonthEnd, YearEnd
 
